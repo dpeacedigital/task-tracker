@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusTask - Minimal Task Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <main class="app-card">
+    <header class="app-header">
+      <div>
+        <h1 class="app-title">Today's Focus</h1>
+        <p class="app-subtitle" id="current-date"></p>
+      </div>
+      <div class="stats-badge">
+        <span id="completed-count">0</span> / <span id="total-count">0</span> Done
+      </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Task Input Form -->
+    <form id="task-form" class="task-form">
+      <div class="input-row">
+        <input 
+          type="text" 
+          id="task-input" 
+          placeholder="What needs to be done?" 
+          required 
+          autocomplete="off"
+        />
+        <button type="submit" class="btn-primary">Add Task</button>
+      </div>
+
+      <div class="meta-row">
+        <div class="select-group">
+          <label for="task-category">Category:</label>
+          <select id="task-category">
+            <option value="Work">💼 Work</option>
+            <option value="Personal">🏠 Personal</option>
+            <option value="Study">📚 Study</option>
+            <option value="Health">💪 Health</option>
+          </select>
+        </div>
+
+        <div class="select-group">
+          <label for="task-priority">Priority:</label>
+          <select id="task-priority">
+            <option value="low">🟢 Low</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+        </div>
+
+        <div class="select-group">
+          <label for="task-due-date">Due:</label>
+          <input type="date" id="task-due-date" />
+        </div>
+      </div>
+    </form>
+
+    <!-- Filter & Action Bar -->
+    <div class="list-controls">
+      <nav class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </nav>
+      <button id="clear-completed-btn" class="btn-text">Clear Completed</button>
+    </div>
+
+    <!-- Task List Container -->
+    <ul id="task-list" class="task-list"></ul>
+
+    <!-- Empty State Fallback -->
+    <div id="empty-state" class="empty-state hidden">
+      <p>🎉 All caught up! Add a new task above.</p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
